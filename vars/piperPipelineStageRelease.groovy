@@ -36,6 +36,9 @@ void call(Map parameters = [:]) {
 
     def stageName = parameters.stageName?:env.STAGE_NAME
 
+
+    println("dbg>> stageName $stageName")
+    println("dbg>> configuration ${script.commonPipelineEnvironment.configuration.runStep?.get(stageName)}")
     Map config = ConfigurationHelper.newInstance(this)
         .loadStepDefaults()
         .mixinGeneralConfig(script.commonPipelineEnvironment, GENERAL_CONFIG_KEYS)
